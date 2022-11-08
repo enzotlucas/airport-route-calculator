@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="MediatR" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Airport.RouteCalculator.Core\Airport.RouteCalculator.Core.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Using Include="Airport.RouteCalculator.Application.ViewModels" />
+		<Using Include="Airport.RouteCalculator.Core.DomainObjects" />
+		
+		<Using Include="MediatR" />
+		<Using Include="AutoMapper" />
+	</ItemGroup>
+
+</Project>

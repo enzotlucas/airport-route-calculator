@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Airport.RouteCalculator.Application\Airport.RouteCalculator.Application.csproj" />
+	  <ProjectReference Include="..\Airport.RouteCalculator.Infrastructure\Airport.RouteCalculator.Infrastructure.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="Airport.RouteCalculator.API.Configurations" />
+
+		<Using Include="Airport.RouteCalculator.Application.Commands.CreateRoute;" />
+		<Using Include="Airport.RouteCalculator.Application.Commands.DeleteRoute;" />
+		<Using Include="Airport.RouteCalculator.Application.Commands.UpdateRoute;" />
+		<Using Include="Airport.RouteCalculator.Application.Queries.GetBestRoute;" />
+		<Using Include="Airport.RouteCalculator.Application.Queries.GetRouteById;" />
+		<Using Include="Airport.RouteCalculator.Application.Queries.GetRoutes;" />
+		<Using Include="Airport.RouteCalculator.Application.ViewModels;" />
+		<Using Include="Airport.RouteCalculator.Core.Exceptions;" />
+		<Using Include="Airport.RouteCalculator.Application.Mapper;" />
+		<Using Include="Airport.RouteCalculator.API.Middlewares;" />
+		<Using Include="Airport.RouteCalculator.Core.DomainObjects;" />
+		<Using Include="Airport.RouteCalculator.Core.Repositories;" />
+		<Using Include="Airport.RouteCalculator.Infrastructure.Data.Repositories;" />
+		<Using Include="Airport.RouteCalculator.Infrastructure.Data;" />
+		
+		<Using Include="Microsoft.AspNetCore.Mvc" />
+		<Using Include="Microsoft.AspNetCore.Mvc.ApiExplorer" />
+		<Using Include="Microsoft.Extensions.Options" />
+		<Using Include="Microsoft.OpenApi.Models" />
+		<Using Include="Microsoft.EntityFrameworkCore" />
+		<Using Include="System.Text.Json.Serialization" />
+		<Using Include="System.Security.Claims" />
+		<Using Include="Swashbuckle.AspNetCore.SwaggerGen" />
+		<Using Include="Newtonsoft.Json" />
+		<Using Include="System.Net" />
+		<Using Include="MediatR" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airport.RouteCalculator.API", "Airport.RouteCalculator.API\Airport.RouteCalculator.API.csproj", "{13A071F5-674C-4808-883B-C023D870B4EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airport.RouteCalculator.Core", "Airport.RouteCalculator.Core\Airport.RouteCalculator.Core.csproj", "{9A37897D-BF66-4EA0-AC33-FC4C1572A925}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airport.RouteCalculator.Infrastructure", "Airport.RouteCalculator.Infrastructure\Airport.RouteCalculator.Infrastructure.csproj", "{C3997A0B-003B-404E-BE52-F575661D3F5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airport.RouteCalculator.Application", "Airport.RouteCalculator.Application\Airport.RouteCalculator.Application.csproj", "{D5DA7558-D66D-4A7E-B08D-161207951B89}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AAEAD09F-18FD-4D21-969E-33801AD8F624}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{443B939C-2C32-46F4-B4FA-584B3277A773}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airport.RouteCalculator.UnitTests", "Airport.RouteCalculator.UnitTests\Airport.RouteCalculator.UnitTests.csproj", "{FFB2C217-F3C6-4A22-829B-76B91D316731}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13A071F5-674C-4808-883B-C023D870B4EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13A071F5-674C-4808-883B-C023D870B4EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13A071F5-674C-4808-883B-C023D870B4EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13A071F5-674C-4808-883B-C023D870B4EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A37897D-BF66-4EA0-AC33-FC4C1572A925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A37897D-BF66-4EA0-AC33-FC4C1572A925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A37897D-BF66-4EA0-AC33-FC4C1572A925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A37897D-BF66-4EA0-AC33-FC4C1572A925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3997A0B-003B-404E-BE52-F575661D3F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3997A0B-003B-404E-BE52-F575661D3F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3997A0B-003B-404E-BE52-F575661D3F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3997A0B-003B-404E-BE52-F575661D3F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5DA7558-D66D-4A7E-B08D-161207951B89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5DA7558-D66D-4A7E-B08D-161207951B89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5DA7558-D66D-4A7E-B08D-161207951B89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5DA7558-D66D-4A7E-B08D-161207951B89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFB2C217-F3C6-4A22-829B-76B91D316731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFB2C217-F3C6-4A22-829B-76B91D316731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFB2C217-F3C6-4A22-829B-76B91D316731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFB2C217-F3C6-4A22-829B-76B91D316731}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{13A071F5-674C-4808-883B-C023D870B4EA} = {AAEAD09F-18FD-4D21-969E-33801AD8F624}
+		{9A37897D-BF66-4EA0-AC33-FC4C1572A925} = {AAEAD09F-18FD-4D21-969E-33801AD8F624}
+		{C3997A0B-003B-404E-BE52-F575661D3F5A} = {AAEAD09F-18FD-4D21-969E-33801AD8F624}
+		{D5DA7558-D66D-4A7E-B08D-161207951B89} = {AAEAD09F-18FD-4D21-969E-33801AD8F624}
+		{FFB2C217-F3C6-4A22-829B-76B91D316731} = {443B939C-2C32-46F4-B4FA-584B3277A773}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC44FE86-4E33-47AA-9A04-1D3EF8EBBA13}
+	EndGlobalSection
+EndGlobal
