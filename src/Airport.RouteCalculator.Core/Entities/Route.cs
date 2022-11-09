@@ -13,8 +13,8 @@
         public Route(string from, string to, decimal value, IValidator<Route> validator)
         {
             Id = Guid.NewGuid();
-            From = from;
-            To = to;
+            From = from.ToUpper();
+            To = to.ToUpper();
             Value = value;
             CreatedAt = DateTime.Now;
 
@@ -59,7 +59,7 @@
                 throw new InvalidRouteException();
             }
 
-            From = from;
+            From = from.ToUpper();
         }
 
         private void UpdateTo(string to)
@@ -74,7 +74,7 @@
                 throw new InvalidRouteException();
             }
 
-            To = to;
+            To = to.ToUpper();
         }
 
         private void UpdateValue(decimal? value)
