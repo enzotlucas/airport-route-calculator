@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,10 +22,12 @@
 		<Using Include="Airport.RouteCalculator.Core.Entities" />
 		<Using Include="Airport.RouteCalculator.Application.Commands.CreateRoute" />
 		<Using Include="Airport.RouteCalculator.Core.Validators" />
+		<Using Include="Airport.RouteCalculator.Core.Exceptions" />
 		
 		<Using Include="MediatR" />
 		<Using Include="FluentValidation" />
 		<Using Include="AutoMapper" />
+		<Using Include="Microsoft.Extensions.Logging" />
 	</ItemGroup>
 
 </Project>

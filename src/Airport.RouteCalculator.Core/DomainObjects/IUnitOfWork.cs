@@ -2,7 +2,7 @@
 {
     public interface IUnitOfWork
     {
-        IRouteRepository RouteRepository { get; }
+        IRouteRepository Routes { get; }
 
         Task<bool> SaveChangesAsync();
     }

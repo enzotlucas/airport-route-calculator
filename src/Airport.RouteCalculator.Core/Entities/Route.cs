@@ -8,8 +8,7 @@
         public decimal Value { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
-
-        protected Route() { }
+        public bool IsValid => Id != Guid.Empty;
 
         public Route(string from, string to, decimal value, IValidator<Route> validator)
         {
@@ -22,6 +21,11 @@
             Validate(validator);
         }
 
+        public Route()
+        {
+            Id = Guid.Empty;
+        }
+
         private void Validate(IValidator<Route> validator)
         {
             var validationResult = validator.Validate(this);
@@ -32,6 +36,60 @@
             }
 
             throw new InvalidRouteException(validationResult.ToDictionary());
+        }
+
+        public void Update(string from, string to, decimal? value)
+        {
+            UpdateFrom(from);
+
+            UpdateTo(to);
+
+            UpdateValue(value);
+        }
+
+        private void UpdateFrom(string from)
+        {
+            if(from is null)
+            {
+                return;
+            }
+
+            if(string.IsNullOrWhiteSpace(from) || from.Equals(To, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidRouteException();
+            }
+
+            From = from;
+        }
+
+        private void UpdateTo(string to)
+        {
+            if (to is null)
+            {
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(to) || to.Equals(From, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidRouteException();
+            }
+
+            To = to;
+        }
+
+        private void UpdateValue(decimal? value)
+        {
+            if (value is null)
+            {
+                return;
+            }
+
+            if(value < 1)
+            {
+                throw new InvalidRouteException();
+            }
+
+            Value = value.Value;
         }
     }
 }

@@ -3,13 +3,13 @@
     public class UnitOfWork : IUnitOfWork
     {
         private readonly SqlServerContext _context;
-        public IRouteRepository RouteRepository { get; }
+        public IRouteRepository Routes { get; }
 
         public UnitOfWork(SqlServerContext context, 
                           IRouteRepository routeRepository)
         {
             _context = context;
-            RouteRepository = routeRepository;
+            Routes = routeRepository;
         }
 
         public async Task<bool> SaveChangesAsync()
