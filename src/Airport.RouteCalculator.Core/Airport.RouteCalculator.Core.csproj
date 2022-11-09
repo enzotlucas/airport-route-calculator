@@ -7,7 +7,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="FluentValidation" Version="11.2.2" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Using Include="Airport.RouteCalculator.Core.Repositories" />
 		<Using Include="Airport.RouteCalculator.Core.Entities" />
+		<Using Include="Airport.RouteCalculator.Core.Exceptions" />
+		
+		<Using Include="FluentValidation" />
 	</ItemGroup>
 </Project>

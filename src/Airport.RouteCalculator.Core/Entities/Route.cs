@@ -1,6 +1,4 @@
-﻿using Airport.RouteCalculator.Core.Exceptions;
-
-namespace Airport.RouteCalculator.Core.Entities
+﻿namespace Airport.RouteCalculator.Core.Entities
 {
     public class Route
     {
@@ -13,7 +11,7 @@ namespace Airport.RouteCalculator.Core.Entities
 
         protected Route() { }
 
-        public Route(string from, string to, decimal value)
+        public Route(string from, string to, decimal value, IValidator<Route> validator)
         {
             Id = Guid.NewGuid();
             From = from;
@@ -21,16 +19,19 @@ namespace Airport.RouteCalculator.Core.Entities
             Value = value;
             CreatedAt = DateTime.Now;
 
-            Validate();
+            Validate(validator);
         }
 
-        private void Validate()
+        private void Validate(IValidator<Route> validator)
         {
-            if (From.Equals(To, StringComparison.OrdinalIgnoreCase))
-                throw new BusinessException("A origem não pode ser igual ao destino.");
+            var validationResult = validator.Validate(this);
 
-            if (Value < 1)
-                throw new BusinessException("O valor da viagem não pode ser abaixo de 1.");
+            if (validationResult.IsValid)
+            {
+                return;
+            }
+
+            throw new InvalidRouteException(validationResult.ToDictionary());
         }
     }
 }

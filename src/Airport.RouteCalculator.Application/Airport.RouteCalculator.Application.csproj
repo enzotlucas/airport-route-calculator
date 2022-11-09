@@ -18,8 +18,12 @@
 	<ItemGroup>
 		<Using Include="Airport.RouteCalculator.Application.ViewModels" />
 		<Using Include="Airport.RouteCalculator.Core.DomainObjects" />
+		<Using Include="Airport.RouteCalculator.Core.Entities" />
+		<Using Include="Airport.RouteCalculator.Application.Commands.CreateRoute" />
+		<Using Include="Airport.RouteCalculator.Core.Validators" />
 		
 		<Using Include="MediatR" />
+		<Using Include="FluentValidation" />
 		<Using Include="AutoMapper" />
 	</ItemGroup>
 

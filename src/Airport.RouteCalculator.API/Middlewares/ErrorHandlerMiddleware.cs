@@ -55,7 +55,9 @@
         {
             var code = HttpStatusCode.BadRequest;
 
-            return ErrorResponse(context, exception, code);
+            var result = JsonConvert.SerializeObject(new { message = exception.Message, errors = exception.ValidationErrors });
+
+            return ErrorResponse(context, result, code);
         }
 
         private static Task HandleExceptionAsync(HttpContext context, Exception exception)
@@ -67,8 +69,13 @@
 
         private static Task ErrorResponse(HttpContext context, Exception exception, HttpStatusCode code)
         {
-            var result = JsonConvert.SerializeObject(new { error = exception.Message });
+            var result = JsonConvert.SerializeObject(new { message = exception.Message, errors = Array.Empty<string>() });
 
+            return ErrorResponse(context, result, code);
+        }
+
+        private static Task ErrorResponse(HttpContext context, string result, HttpStatusCode code)
+        {
             context.Response.ContentType = "application/json";
 
             context.Response.StatusCode = (int)code;
