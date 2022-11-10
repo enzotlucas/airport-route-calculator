@@ -8,6 +8,8 @@
 
             builder.Services.AddAutoMapper(typeof(RouteProfile));
 
+            builder.Services.AddScoped<IRouteService, RouteService>();
+
             return builder;
         }
     }

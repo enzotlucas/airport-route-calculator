@@ -23,7 +23,10 @@ global using Airport.RouteCalculator.Application.Commands.UpdateRoute;
 global using Airport.RouteCalculator.Application.Queries.GetRouteById;
 global using Airport.RouteCalculator.Application.Queries.GetRoutes;
 global using Airport.RouteCalculator.Application.ViewModels;
-
+global using Airport.RouteCalculator.Application.Queries.GetBestRoute;
+global using Airport.RouteCalculator.Application.Services;
 
 //Core
 global using Airport.RouteCalculator.Core.Exceptions;
+global using Airport.RouteCalculator.Core.Entities;
+global using Airport.RouteCalculator.Core.Validators;

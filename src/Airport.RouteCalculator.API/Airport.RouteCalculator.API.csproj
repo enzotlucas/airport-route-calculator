@@ -44,6 +44,7 @@
 		<Using Include="Airport.RouteCalculator.Infrastructure.Data.Repositories;" />
 		<Using Include="Airport.RouteCalculator.Infrastructure.Data;" />
 		<Using Include="Airport.RouteCalculator.Core.Validators;" />
+		<Using Include="Airport.RouteCalculator.Application.Services;" />
 		
 		<Using Include="Microsoft.AspNetCore.Mvc" />
 		<Using Include="FluentValidation.AspNetCore" />
