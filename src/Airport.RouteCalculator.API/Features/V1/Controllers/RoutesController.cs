@@ -33,12 +33,12 @@
             return Ok(response);
         }
 
-        [HttpGet("best")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<RouteViewModel>))]
+        [HttpGet("best-cost")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
-        public async Task<IActionResult> GetBestRoute(string from, string to)
+        public async Task<IActionResult> GetBestCostRoute(string from, string to)
         {
-            var response = await _mediator.Send(new GetBestRouteQuery(from, to));
+            var response = await _mediator.Send(new GetBestCostRouteQuery(from, to));
 
             return Ok(response);
         }

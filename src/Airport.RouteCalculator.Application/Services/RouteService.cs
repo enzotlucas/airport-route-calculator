@@ -4,7 +4,7 @@
     {
         private readonly List<Route> _routes;
         private readonly List<BestRoutesOrder> _bestRoutes;
-        private GetBestRouteQuery _request;       
+        private GetBestCostRouteQuery _request;       
         private BestRoutesOrder _bestRoutesOrder;
 
         public RouteService()
@@ -13,7 +13,7 @@
             _bestRoutes = new List<BestRoutesOrder>();
         }
 
-        public string GetBestRoute(GetBestRouteQuery request, IEnumerable<Route> routes)
+        public string GetBestRoute(GetBestCostRouteQuery request, IEnumerable<Route> routes)
         {
             _request = request;
 

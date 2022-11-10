@@ -4,6 +4,9 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>disable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>673d6b2e-8359-4217-8a5b-b11818b8646e</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -17,6 +20,7 @@
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
 	</ItemGroup>
@@ -32,7 +36,7 @@
 		<Using Include="Airport.RouteCalculator.Application.Commands.CreateRoute;" />
 		<Using Include="Airport.RouteCalculator.Application.Commands.DeleteRoute;" />
 		<Using Include="Airport.RouteCalculator.Application.Commands.UpdateRoute;" />
-		<Using Include="Airport.RouteCalculator.Application.Queries.GetBestRoute;" />
+		<Using Include="Airport.RouteCalculator.Application.Queries.GetBestCostRoute;" />
 		<Using Include="Airport.RouteCalculator.Application.Queries.GetRouteById;" />
 		<Using Include="Airport.RouteCalculator.Application.Queries.GetRoutes;" />
 		<Using Include="Airport.RouteCalculator.Application.ViewModels;" />

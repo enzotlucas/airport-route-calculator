@@ -18,7 +18,7 @@
                 new Route("SCL","ORL",20,validator)
             };
 
-            var request = new GetBestRouteQuery("GRU", "CDG");
+            var request = new GetBestCostRouteQuery("GRU", "CDG");
 
             var sut = new RouteService();
 

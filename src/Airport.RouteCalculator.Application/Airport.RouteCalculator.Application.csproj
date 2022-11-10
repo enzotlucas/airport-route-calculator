@@ -23,8 +23,9 @@
 		<Using Include="Airport.RouteCalculator.Application.Commands.CreateRoute" />
 		<Using Include="Airport.RouteCalculator.Core.Validators" />
 		<Using Include="Airport.RouteCalculator.Core.Exceptions" />
-		<Using Include="Airport.RouteCalculator.Application.Queries.GetBestRoute" />
+		<Using Include="Airport.RouteCalculator.Application.Queries.GetBestCostRoute" />
 		<Using Include="Airport.RouteCalculator.Core.ValueObjects" />
+		<Using Include="Airport.RouteCalculator.Application.Services" />
 		
 		<Using Include="MediatR" />
 		<Using Include="FluentValidation" />

@@ -2,6 +2,6 @@
 {
     public interface IRouteService
     {
-        string GetBestRoute(GetBestRouteQuery request, IEnumerable<Route> routes);
+        string GetBestRoute(GetBestCostRouteQuery request, IEnumerable<Route> routes);
     }
 }

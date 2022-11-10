@@ -1,23 +1,21 @@
-﻿using Airport.RouteCalculator.Application.Services;
-
-namespace Airport.RouteCalculator.Application.Queries.GetBestRoute
+﻿namespace Airport.RouteCalculator.Application.Queries.GetBestCostRoute
 {
-    public class GetBestRouteQueryHandler : IRequestHandler<GetBestRouteQuery, string>
+    public class GetBestCostRouteQueryHandler : IRequestHandler<GetBestCostRouteQuery, string>
     {
         private readonly IUnitOfWork _uow;
         private readonly IRouteService _service;
-        private readonly ILogger<GetBestRouteQueryHandler> _logger;
+        private readonly ILogger<GetBestCostRouteQueryHandler> _logger;
 
-        public GetBestRouteQueryHandler(IUnitOfWork uow,
+        public GetBestCostRouteQueryHandler(IUnitOfWork uow,
                                         IRouteService service,
-                                        ILogger<GetBestRouteQueryHandler> logger)
+                                        ILogger<GetBestCostRouteQueryHandler> logger)
         {
             _uow = uow;
             _service = service;
             _logger = logger;
         }
 
-        public async Task<string> Handle(GetBestRouteQuery request, CancellationToken cancellationToken)
+        public async Task<string> Handle(GetBestCostRouteQuery request, CancellationToken cancellationToken)
         {
             var routes = await _uow.Routes.GetAllAsync();
 
