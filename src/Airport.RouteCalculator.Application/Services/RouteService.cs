@@ -26,21 +26,6 @@
             return bestRoute.ToString();
         }
 
-        private void Validate(IEnumerable<Route> firstRouteCandidates)
-        {
-            var lastRouteCandidates = _routes.Where(r => r.To.Equals(_request.To, StringComparison.OrdinalIgnoreCase));
-
-            if (!lastRouteCandidates.Any())
-            {
-                throw new BusinessException("Não existem rotas cadastradas para esse destino");
-            }
-
-            if (!firstRouteCandidates.Any())
-            {
-                throw new BusinessException("Não existem rotas cadastradas que partem dessa origem");
-            }
-        }
-
         private void GenerateBestRoutes()
         {
             var firstRouteCandidates = _routes.Where(r => r.From.Equals(_request.From, StringComparison.OrdinalIgnoreCase));
@@ -59,6 +44,22 @@
                 StartBestRoutesGeneration(_routes, routeCandidate);
             }
         }
+
+        private void Validate(IEnumerable<Route> firstRouteCandidates)
+        {
+            var lastRouteCandidates = _routes.Where(r => r.To.Equals(_request.To, StringComparison.OrdinalIgnoreCase));
+
+            if (!lastRouteCandidates.Any())
+            {
+                throw new BusinessException("Não existem rotas cadastradas para esse destino");
+            }
+
+            if (!firstRouteCandidates.Any())
+            {
+                throw new BusinessException("Não existem rotas cadastradas que partem dessa origem");
+            }
+        }
+
 
         private void StartBestRoutesGeneration(IEnumerable<Route> routes, Route routeCandidate)
         {
