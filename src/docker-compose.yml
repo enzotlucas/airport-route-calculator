@@ -16,7 +16,7 @@ services:
       ACCEPT_EULA: 'Y'
       SA_PASSWORD: "sDq1%dvaW"
     volumes:
-      - c:\dados\volumes\mssql:/var/opt/mssql3
+      - C:\Users\Public\Volumes:/var/opt/mssql3
     ports:
       - '11433:1433'    
     expose:

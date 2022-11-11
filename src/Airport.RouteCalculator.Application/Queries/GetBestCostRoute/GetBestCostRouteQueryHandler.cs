@@ -1,14 +1,14 @@
 ﻿namespace Airport.RouteCalculator.Application.Queries.GetBestCostRoute
 {
-    public class GetBestCostRouteQueryHandler : IRequestHandler<GetBestCostRouteQuery, string>
+    public sealed class GetBestCostRouteQueryHandler : IRequestHandler<GetBestCostRouteQuery, string>
     {
         private readonly IUnitOfWork _uow;
         private readonly IRouteService _service;
         private readonly ILogger<GetBestCostRouteQueryHandler> _logger;
 
         public GetBestCostRouteQueryHandler(IUnitOfWork uow,
-                                        IRouteService service,
-                                        ILogger<GetBestCostRouteQueryHandler> logger)
+                                            IRouteService service,
+                                            ILogger<GetBestCostRouteQueryHandler> logger)
         {
             _uow = uow;
             _service = service;
@@ -24,7 +24,7 @@
                 throw new BusinessException("Não existem rotas cadastradas");
             }
 
-            var bestRoute = _service.GetBestRoute(request, routes);
+            var bestRoute = _service.GetBestCostRoute(request, routes);
 
             _logger.LogInformation($"Request to best route, from {request.From} to {request.To}.", bestRoute);
 

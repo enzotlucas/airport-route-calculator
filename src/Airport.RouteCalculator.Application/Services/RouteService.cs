@@ -1,6 +1,6 @@
 ﻿namespace Airport.RouteCalculator.Application.Services
 {
-    public class RouteService : IRouteService
+    public sealed class RouteService : IRouteService
     {
         private readonly List<Route> _routes;
         private readonly List<BestRoutesOrder> _bestRoutes;
@@ -13,15 +13,20 @@
             _bestRoutes = new List<BestRoutesOrder>();
         }
 
-        public string GetBestRoute(GetBestCostRouteQuery request, IEnumerable<Route> routes)
+        public string GetBestCostRoute(GetBestCostRouteQuery request, IEnumerable<Route> routes)
         {
             _request = request;
 
             _routes.AddRange(routes);
 
             GenerateBestRoutes();
+            
+            var bestRoute = _bestRoutes.OrderBy(b => b.TotalPrice).FirstOrDefault(b => b.RouteIsValid(_request.To));
 
-            var bestRoute = _bestRoutes.OrderBy(b => b.TotalPrice).FirstOrDefault();
+            if(bestRoute is null)
+            {
+                throw new BusinessException("Não existe rota que vá da origem ao destino informado.");
+            }
 
             return bestRoute.ToString();
         }
@@ -32,17 +37,7 @@
 
             Validate(firstRouteCandidates);
 
-            foreach (var routeCandidate in firstRouteCandidates)
-            {
-                if (routeCandidate.To.Equals(_request.To, StringComparison.OrdinalIgnoreCase))
-                {
-                    _bestRoutes.Add(new BestRoutesOrder(routeCandidate));
-
-                    continue;
-                }
-
-                StartBestRoutesGeneration(_routes, routeCandidate);
-            }
+            StartBestRoutesGeneration(firstRouteCandidates);
         }
 
         private void Validate(IEnumerable<Route> firstRouteCandidates)
@@ -60,10 +55,24 @@
             }
         }
 
-
-        private void StartBestRoutesGeneration(IEnumerable<Route> routes, Route routeCandidate)
+        private void StartBestRoutesGeneration(IEnumerable<Route> firstRouteCandidates)
         {
-            var secondRouteCandidates = routes.Where(r => r.From.Equals(routeCandidate.To));
+            foreach (var routeCandidate in firstRouteCandidates)
+            {
+                if (routeCandidate.To.Equals(_request.To, StringComparison.OrdinalIgnoreCase))
+                {
+                    _bestRoutes.Add(new BestRoutesOrder(routeCandidate));
+
+                    continue;
+                }
+
+                GetNextRoutesCandidates(routeCandidate);
+            }
+        }
+
+        private void GetNextRoutesCandidates(Route routeCandidate)
+        {
+            var secondRouteCandidates = _routes.Where(r => r.From.Equals(routeCandidate.To));
 
             foreach (var nextRouteCandidate in secondRouteCandidates)
             {
@@ -71,18 +80,33 @@
 
                 _bestRoutesOrder.AddRoute(nextRouteCandidate);
 
-                var nextRouteCandidates = _routes.Where(r => r.From.Equals(nextRouteCandidate.To, StringComparison.OrdinalIgnoreCase));
+                if (!GenerateNextRoutesCandidatesIfBestRouteDoesntMatch(nextRouteCandidate, out var nextRouteCandidates))
+                {
+                    continue;
+                }    
 
                 GetNextRoute(nextRouteCandidates);
             }
+        }
+
+        private bool GenerateNextRoutesCandidatesIfBestRouteDoesntMatch(Route nextRouteCandidate, out IEnumerable<Route> nextRouteCandidates)
+        {
+            if(AddBestRouteIfMatches(nextRouteCandidate))
+            {
+                nextRouteCandidates = Enumerable.Empty<Route>();
+
+                return false;
+            }
+
+            nextRouteCandidates = _routes.Where(r => r.From.Equals(nextRouteCandidate.To, StringComparison.OrdinalIgnoreCase));
+
+            return true;
         }
 
         private void GetNextRoute(IEnumerable<Route> routeCandidates)
         {
             foreach (var routeCandidate in routeCandidates)
             {
-                var nextRouteCandidates = _routes.Where(r => r.From.Equals(routeCandidate.To, StringComparison.OrdinalIgnoreCase));
-
                 if (_bestRoutesOrder.RouteAlreadyMapped(routeCandidate))
                 {
                     return;
@@ -90,7 +114,7 @@
 
                 _bestRoutesOrder.AddRoute(routeCandidate);
 
-                if (AddBestRouteIfMatches(routeCandidate))
+                if (!GenerateNextRoutesCandidatesIfBestRouteDoesntMatch(routeCandidate, out var nextRouteCandidates))
                 {
                     continue;
                 }

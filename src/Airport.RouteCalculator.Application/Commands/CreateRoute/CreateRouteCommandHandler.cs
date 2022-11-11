@@ -1,6 +1,6 @@
 ﻿namespace Airport.RouteCalculator.Application.Commands.CreateRoute
 {
-    public class CreateRouteCommandHandler : IRequestHandler<CreateRouteCommand, RouteViewModel>
+    public sealed class CreateRouteCommandHandler : IRequestHandler<CreateRouteCommand, RouteViewModel>
     {
         private readonly IUnitOfWork _uow;
         private readonly ILogger<CreateRouteCommandHandler> _logger;

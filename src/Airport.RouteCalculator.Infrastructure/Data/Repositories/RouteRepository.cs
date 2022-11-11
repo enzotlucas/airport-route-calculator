@@ -1,6 +1,6 @@
 ﻿namespace Airport.RouteCalculator.Infrastructure.Data.Repositories
 {
-    public class RouteRepository : IRouteRepository
+    public sealed class RouteRepository : IRouteRepository
     {
         private readonly SqlServerContext _context;
 

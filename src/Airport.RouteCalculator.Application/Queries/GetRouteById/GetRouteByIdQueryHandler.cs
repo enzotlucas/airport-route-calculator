@@ -1,6 +1,6 @@
 ﻿namespace Airport.RouteCalculator.Application.Queries.GetRouteById
 {
-    public class GetRouteByIdQueryHandler : IRequestHandler<GetRouteByIdQuery, RouteViewModel>
+    public sealed class GetRouteByIdQueryHandler : IRequestHandler<GetRouteByIdQuery, RouteViewModel>
     {
         private readonly IUnitOfWork _uow;
         private readonly ILogger<GetRouteByIdQueryHandler> _logger;

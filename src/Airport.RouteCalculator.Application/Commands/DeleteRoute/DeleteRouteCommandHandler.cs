@@ -1,6 +1,6 @@
 ﻿namespace Airport.RouteCalculator.Application.Commands.DeleteRoute
 {
-    public class DeleteRouteCommandHandler : IRequestHandler<DeleteRouteCommand>
+    public sealed class DeleteRouteCommandHandler : IRequestHandler<DeleteRouteCommand>
     {
         private readonly IUnitOfWork _uow;
         private readonly ILogger<DeleteRouteCommandHandler> _logger;

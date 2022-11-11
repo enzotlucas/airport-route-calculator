@@ -1,6 +1,6 @@
 ﻿namespace Airport.RouteCalculator.Application.ViewModels
 {
-    public class RouteViewModel
+    public sealed class RouteViewModel
     {
         public Guid Id { get; set; }
         public string Origem { get; set; }

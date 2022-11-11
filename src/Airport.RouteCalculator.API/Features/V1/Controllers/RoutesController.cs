@@ -4,7 +4,7 @@
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/routes")]
     [Produces("application/json")]
-    public class RoutesController : ControllerBase
+    public sealed class RoutesController : ControllerBase
     {
         private readonly IMediator _mediator;
 
@@ -15,7 +15,7 @@
 
         [HttpGet("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RouteViewModel))]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponseViewModel))]
         public async Task<IActionResult> GetById(Guid id)
         {
             var response = await _mediator.Send(new GetRouteByIdQuery(id));
@@ -25,7 +25,7 @@
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<RouteViewModel>))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponseViewModel))]
         public async Task<IActionResult> Get(int? page, int? pageCount)
         {
             var response = await _mediator.Send(new GetRoutesQuery(page, pageCount));
@@ -35,7 +35,7 @@
 
         [HttpGet("best-cost")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponseViewModel))]
         public async Task<IActionResult> GetBestCostRoute(string from, string to)
         {
             var response = await _mediator.Send(new GetBestCostRouteQuery(from, to));
@@ -44,8 +44,8 @@
         }
 
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(string))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(RouteViewModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponseViewModel))]
         public async Task<IActionResult> Post(RouteViewModel route)
         {
             var response = await _mediator.Send(new CreateRouteCommand(route));
@@ -55,7 +55,7 @@
 
         [HttpDelete("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponseViewModel))]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _mediator.Send(new DeleteRouteCommand(id));
@@ -65,8 +65,8 @@
 
         [HttpPut("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponseViewModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponseViewModel))]
         public async Task<IActionResult> Put(Guid id, RouteViewModel route)
         {
             await _mediator.Send(new UpdateRouteCommand(id, route));

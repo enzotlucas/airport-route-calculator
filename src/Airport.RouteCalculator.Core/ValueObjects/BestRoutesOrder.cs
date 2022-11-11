@@ -1,6 +1,6 @@
 ﻿namespace Airport.RouteCalculator.Core.ValueObjects
 {
-    public class BestRoutesOrder
+    public sealed class BestRoutesOrder
     {
         public List<BestRoute> BestRoutes { get; set; }
         public decimal TotalPrice => BestRoutes.Sum(b => b.Route.Value);
@@ -28,6 +28,14 @@
         public bool RouteAlreadyMapped(Route route)
         {
             return BestRoutes.Any(r => r.Route.Id == route.Id);
+        }
+
+        public bool RouteIsValid(string to)
+        {
+            return BestRoutes.FirstOrDefault(b => b.Position == BestRoutes.Count - 1)
+                             .Route
+                             .To
+                             .Equals(to, StringComparison.OrdinalIgnoreCase);
         }
 
         public override string ToString()

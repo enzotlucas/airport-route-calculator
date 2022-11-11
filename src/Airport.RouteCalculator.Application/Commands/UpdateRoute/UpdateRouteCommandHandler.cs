@@ -1,6 +1,6 @@
 ﻿namespace Airport.RouteCalculator.Application.Commands.UpdateRoute
 {
-    public class UpdateRouteCommandHandler : IRequestHandler<UpdateRouteCommand>
+    public sealed class UpdateRouteCommandHandler : IRequestHandler<UpdateRouteCommand>
     {
         private readonly IUnitOfWork _uow;
         private readonly ILogger<UpdateRouteCommandHandler> _logger;

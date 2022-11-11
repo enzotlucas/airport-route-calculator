@@ -1,6 +1,6 @@
 ﻿namespace Airport.RouteCalculator.Infrastructure.Data
 {
-    public class SqlServerContext : DbContext
+    public sealed class SqlServerContext : DbContext
     {
         public SqlServerContext(DbContextOptions options) : base(options)
         {

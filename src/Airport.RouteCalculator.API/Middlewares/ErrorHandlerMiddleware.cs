@@ -1,6 +1,6 @@
 ﻿namespace Airport.RouteCalculator.API.Middlewares
 {
-    public class ErrorHandlerMiddleware
+    public sealed class ErrorHandlerMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<ErrorHandlerMiddleware> _logger;
@@ -55,7 +55,7 @@
         {
             var code = HttpStatusCode.BadRequest;
 
-            var result = JsonConvert.SerializeObject(new { message = exception.Message, errors = exception.ValidationErrors });
+            var result = JsonConvert.SerializeObject(new ErrorResponseViewModel(exception));
 
             return ErrorResponse(context, result, code);
         }
@@ -69,7 +69,7 @@
 
         private static Task ErrorResponse(HttpContext context, Exception exception, HttpStatusCode code)
         {
-            var result = JsonConvert.SerializeObject(new { message = exception.Message, errors = Array.Empty<string>() });
+            var result = JsonConvert.SerializeObject(new ErrorResponseViewModel(exception));
 
             return ErrorResponse(context, result, code);
         }

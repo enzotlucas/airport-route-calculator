@@ -1,6 +1,6 @@
 ﻿namespace Airport.RouteCalculator.Core.Entities
 {
-    public class Route
+    public sealed class Route
     {
         public Guid Id { get; private set; }
         public string From { get; private set; }
