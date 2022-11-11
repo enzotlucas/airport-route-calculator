@@ -15,5 +15,19 @@
 
             return builder;
         }
+
+        public static WebApplication UseInfrastructureConfiguration(this WebApplication app)
+        {
+            using var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope();
+
+            var context = serviceScope.ServiceProvider.GetRequiredService<SqlServerContext>();
+
+            if (context.Database.GetPendingMigrations().Any())
+            {
+                context.Database.Migrate();
+            }
+
+            return app;
+        }
     }
 }

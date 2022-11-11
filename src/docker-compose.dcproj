@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>476cd5a2-36a9-4aa8-a97e-351cd061664e</ProjectGuid>
+    <ProjectGuid>32b4b610-9dd9-4476-a1f5-32b5fb2e3a6c</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>airport.routecalculator.api</DockerServiceName>

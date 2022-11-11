@@ -1,4 +1,6 @@
-﻿namespace Airport.RouteCalculator.Infrastructure.Data.Repositories
+﻿using System.Data.SqlClient;
+
+namespace Airport.RouteCalculator.Infrastructure.Data.Repositories
 {
     public sealed class RouteRepository : IRouteRepository
     {
@@ -45,7 +47,7 @@
         {
             var query = QueriesExtensions.PagedRoutes;
 
-            using var dbConnection = new SqlConnection(_context.Database.GetDbConnection().ConnectionString);
+            var dbConnection = new SqlConnection(_context.Database.GetDbConnection().ConnectionString);
 
             return await dbConnection.QueryAsync<Route>(
                query,

@@ -1,6 +1,19 @@
 version: '3.4'
 
 services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    hostname: 'sqlserver'
+    environment:
+      ACCEPT_EULA: 'Y'
+      SA_PASSWORD: "AvS#a1s45s"
+    volumes:
+      - c:\dados\volumes\mssql:/var/opt/mssql3
+    ports:
+      - '11433:1433'    
+    expose:
+      - 1433
+
   airport.routecalculator.api:
     image: ${DOCKER_REGISTRY-}airportroutecalculatorapi
     build:
@@ -8,17 +21,3 @@ services:
       dockerfile: Airport.RouteCalculator.API/Dockerfile
     depends_on:
       - sqlserver
-
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2019-latest
-    hostname: 'sqlserver'
-    environment:
-      ACCEPT_EULA: 'Y'
-      SA_PASSWORD: "sDq1%dvaW"
-    volumes:
-      - C:\Users\Public\Volumes:/var/opt/mssql3
-    ports:
-      - '11433:1433'    
-    expose:
-      - 1433
-      
