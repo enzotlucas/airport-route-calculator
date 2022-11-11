@@ -4,6 +4,7 @@ services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2019-latest
     hostname: 'sqlserver'
+    container_name: airport_sqlserver
     environment:
       ACCEPT_EULA: 'Y'
       SA_PASSWORD: "AvS#a1s45s"
@@ -19,5 +20,6 @@ services:
     build:
       context: .
       dockerfile: Airport.RouteCalculator.API/Dockerfile
+    container_name: airport_routecalculatorapi
     depends_on:
       - sqlserver
