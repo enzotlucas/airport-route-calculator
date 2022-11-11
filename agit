@@ -1,0 +1,59 @@
+[33mcommit 2017e5b7b349b4b57ca612d1f2db32ba95a5b34c[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Enzo Thomazi Lucas <enzotlucas31@gmail.com>
+Date:   Fri Nov 11 12:16:07 2022 -0300
+
+    adding docker
+
+[33mcommit ca9cefc081840c83784c8327391492192f049bb3[m
+Author: = <enzotlucas31@gmail.com>
+Date:   Fri Nov 11 01:25:17 2022 -0300
+
+    refactoring route service, adding sealed modificator to classes, creating ErrorResponseViewModel for default errors responses
+
+[33mcommit d2e9ff37deaf0396d5cee31f64fb8335fbbac639[m
+Author: Enzo Thomazi Lucas <enzotlucas31@gmail.com>
+Date:   Thu Nov 10 18:03:12 2022 -0300
+
+    changing class names
+
+[33mcommit f8a0b95a0291f38ca4ce4b03e493248e28b35ac3[m
+Author: = <enzotlucas31@gmail.com>
+Date:   Thu Nov 10 00:56:36 2022 -0300
+
+    small update on the order of methods call
+
+[33mcommit 53c9ea097b04dd636c460b501a571c3d67c46d6a[m
+Author: = <enzotlucas31@gmail.com>
+Date:   Thu Nov 10 00:51:54 2022 -0300
+
+    Adding 'getbestroute' rule
+
+[33mcommit 6ff6092ed7606ba622c72b30e29128f7a98573ad[m
+Author: Enzo Thomazi Lucas <enzotlucas31@gmail.com>
+Date:   Wed Nov 9 18:13:23 2022 -0300
+
+    addind queries, adding repository, updating validator
+
+[33mcommit b4e31b859287c32efdb5ecfa75a5898564a73fe7[m
+Author: = <enzotlucas31@gmail.com>
+Date:   Wed Nov 9 08:34:11 2022 -0300
+
+    Adding command handlers
+
+[33mcommit 9a12b473c33ce52eead9b9faba183e10f75ed707[m
+Author: Enzo Thomazi Lucas <enzotlucas31@gmail.com>
+Date:   Wed Nov 9 01:22:02 2022 -0300
+
+    adding fluentvalidator and automapper configurations
+
+[33mcommit 3afe8ab0ed893f14e942abe9e494c0d354d43282[m
+Author: Enzo Thomazi Lucas <enzotlucas31@gmail.com>
+Date:   Tue Nov 8 20:37:44 2022 -0300
+
+    Initial commit
+
+[33mcommit 5fe1778b46ff39f8e4ce56e5d6bf709a1ec9f9f3[m
+Author: Enzo Thomazi Lucas <81045171+enzotlucas@users.noreply.github.com>
+Date:   Tue Nov 8 13:38:58 2022 -0300
+
+    Initial commit
