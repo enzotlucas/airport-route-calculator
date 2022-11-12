@@ -1,4 +1,6 @@
-﻿namespace Airport.RouteCalculator.UnitTests.Fixtures.Application.ViewModels
+﻿using Microsoft.AspNetCore.Components.Routing;
+
+namespace Airport.RouteCalculator.UnitTests.Fixtures.Application.ViewModels
 {
     public class RouteViewModelFixture
     {
@@ -25,6 +27,15 @@
                                               .Generate(quantity);
         }
 
+        public RouteViewModel GenerateValidFromEntity(Route product)
+        {
+            return new Faker<RouteViewModel>().RuleFor(r => r.Id, product.Id)
+                                              .RuleFor(r => r.Origem, product.From)
+                                              .RuleFor(r => r.Destino, product.To)
+                                              .RuleFor(r => r.Valor, product.Value)
+                                              .Generate();
+        }
+
         private string GenerateLocation()
         {
             return $"{_letters[_numberGenerator.Next(0, _letters.Length - 1)]}{_letters[_numberGenerator.Next(0, _letters.Length - 1)]}{_letters[_numberGenerator.Next(0, _letters.Length - 1)]}";
@@ -34,5 +45,41 @@
         {
             return new();
         }
+
+        public RouteViewModel GenerateInvalid(InvalidRouteViewModelField invalidField, RouteViewModel routeViewModel)
+        {
+            switch (invalidField)
+            {
+                case InvalidRouteViewModelField.FROM:
+                    routeViewModel.Origem = string.Empty;
+                    break;
+                case InvalidRouteViewModelField.FROM_EQUALS_TO:
+                    routeViewModel.Origem = routeViewModel.Destino;
+                    break;
+                case InvalidRouteViewModelField.TO:
+                    routeViewModel.Destino = string.Empty;
+                    break;
+                case InvalidRouteViewModelField.TO_EQUALS_FROM:
+                    routeViewModel.Destino = routeViewModel.Origem;
+                    break;
+                case InvalidRouteViewModelField.VALUE:
+                    routeViewModel.Valor = 0;
+                    break;
+                default:
+                    return GenerateInvalid();
+            }
+
+            return routeViewModel;
+        }
+    }
+
+    public enum InvalidRouteViewModelField
+    {
+        FROM,
+        FROM_EQUALS_TO,
+        TO,
+        TO_EQUALS_FROM,
+        VALUE,
+        ALL
     }
 }

@@ -56,7 +56,7 @@
 
             if(string.IsNullOrWhiteSpace(from) || from.Equals(To, StringComparison.OrdinalIgnoreCase))
             {
-                throw new InvalidRouteException();
+                throw new InvalidFromException();
             }
 
             From = from.ToUpper();
@@ -71,7 +71,7 @@
 
             if (string.IsNullOrWhiteSpace(to) || to.Equals(From, StringComparison.OrdinalIgnoreCase))
             {
-                throw new InvalidRouteException();
+                throw new InvalidToException();
             }
 
             To = to.ToUpper();
@@ -86,7 +86,7 @@
 
             if(value < 1)
             {
-                throw new InvalidRouteException();
+                throw new InvalidValueException();
             }
 
             Value = value.Value;
