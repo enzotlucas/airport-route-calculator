@@ -44,6 +44,7 @@
         [Fact]
         public void Handle_InvalidInformation_ShouldThrow()
         {
+            //Arrange
             var route = _fixture.Route.GenerateInvalid();
             var routeViewModel = _fixture.RouteViewModel.GenerateValidFromEntity(route);
             var request = _fixture.CreateRouteCommand.GenerateCommandFromViewModel(routeViewModel);
@@ -61,6 +62,7 @@
         [Fact]
         public void Handle_ExistingRoute_ShouldThrow()
         {
+            //Arrange
             var route = _fixture.Route.GenerateInvalid();
             var routeViewModel = _fixture.RouteViewModel.GenerateValidFromEntity(route);
             var request = _fixture.CreateRouteCommand.GenerateCommandFromViewModel(routeViewModel);
@@ -78,6 +80,7 @@
         [Fact]
         public void Handle_ValidInformationServiceUnavailable_ShouldThrow()
         {
+            //Arrange
             var route = _fixture.Route.GenerateValid();
             var routeViewModel = _fixture.RouteViewModel.GenerateValidFromEntity(route);
             var request = _fixture.CreateRouteCommand.GenerateCommandFromViewModel(routeViewModel);

@@ -10,10 +10,5 @@
             Route = route;
             Position = position;
         }
-
-        public override string ToString()
-        {
-            return $"{Route.From} - {Route.To}";
-        }
     }
 }

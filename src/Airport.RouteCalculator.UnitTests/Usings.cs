@@ -12,10 +12,12 @@ global using Microsoft.AspNetCore.Mvc;
 
 //Tests
 global using Airport.RouteCalculator.UnitTests.Fixtures.API.Controllers;
+global using Airport.RouteCalculator.UnitTests.Fixtures.Core;
 global using Airport.RouteCalculator.UnitTests.Fixtures.API;
 global using Airport.RouteCalculator.UnitTests.Fixtures.Application.ViewModels;
 global using Airport.RouteCalculator.UnitTests.Fixtures.Application.Commands;
 global using Airport.RouteCalculator.UnitTests.Fixtures.Core.Entities;
+global using Airport.RouteCalculator.UnitTests.Application.Queries;
 global using Airport.RouteCalculator.UnitTests.Fixtures.Application;
 
 //API
@@ -35,4 +37,5 @@ global using Airport.RouteCalculator.Application.Services;
 global using Airport.RouteCalculator.Core.Exceptions;
 global using Airport.RouteCalculator.Core.Entities;
 global using Airport.RouteCalculator.Core.Validators;
+global using Airport.RouteCalculator.Core.ValueObjects;
 global using Airport.RouteCalculator.Core.DomainObjects;

@@ -13,10 +13,11 @@
         public Route(string from, string to, decimal value, IValidator<Route> validator)
         {
             Id = Guid.NewGuid();
-            From = from.ToUpper();
-            To = to.ToUpper();
+            From = from?.ToUpper();
+            To = to?.ToUpper();
             Value = value;
             CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
 
             Validate(validator);
         }
@@ -49,12 +50,12 @@
 
         private void UpdateFrom(string from)
         {
-            if(from is null)
+            if(from is null || from.Equals(From, StringComparison.OrdinalIgnoreCase))
             {
                 return;
             }
 
-            if(string.IsNullOrWhiteSpace(from) || from.Equals(To, StringComparison.OrdinalIgnoreCase))
+            if(string.IsNullOrWhiteSpace(from) || from.Length != 3 || from.Equals(To, StringComparison.OrdinalIgnoreCase))
             {
                 throw new InvalidFromException();
             }
@@ -64,12 +65,12 @@
 
         private void UpdateTo(string to)
         {
-            if (to is null)
+            if (to is null || to.Equals(To, StringComparison.OrdinalIgnoreCase))
             {
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(to) || to.Equals(From, StringComparison.OrdinalIgnoreCase))
+            if (string.IsNullOrWhiteSpace(to) || to.Length != 3 || to.Equals(From, StringComparison.OrdinalIgnoreCase))
             {
                 throw new InvalidToException();
             }
@@ -79,7 +80,7 @@
 
         private void UpdateValue(decimal? value)
         {
-            if (value is null)
+            if (value is null || value.Value == Value)
             {
                 return;
             }

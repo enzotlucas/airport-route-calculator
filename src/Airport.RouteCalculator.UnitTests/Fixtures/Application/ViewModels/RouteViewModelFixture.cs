@@ -27,6 +27,16 @@ namespace Airport.RouteCalculator.UnitTests.Fixtures.Application.ViewModels
                                               .Generate(quantity);
         }
 
+        public IEnumerable<RouteViewModel> GenerateValidCollectionFromEntity(IEnumerable<Route> routes)
+        {
+            var response = new List<RouteViewModel>();
+
+            foreach (var route in routes)
+                response.Add(GenerateValidFromEntity(route));
+
+            return response;
+        }
+
         public RouteViewModel GenerateValidFromEntity(Route product)
         {
             return new Faker<RouteViewModel>().RuleFor(r => r.Id, product.Id)
